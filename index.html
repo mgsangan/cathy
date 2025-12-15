@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Are you ready to feel the care of Fundador?</title>
+<style>
+:root{
+  --bg1:#0f0c29;
+  --bg2:#302b63;
+  --bg3:#24243e;
+  --gold:#ffd56b;
+  --wine:#6e1f2a;
+  --rose:#d0536e;
+  --cream:#fff7e3;
+  --dark:#0d0d13;
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 80% -200px, rgba(255,190,90,0.15), transparent 60%),
+              linear-gradient(120deg, var(--bg1), var(--bg2) 50%, var(--bg3));
+  color:#f9fafb;
+  overflow-x:hidden;
+}
+
+/* Subtle vignette */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background: radial-gradient(1000px 500px at 50% 120%, rgba(0,0,0,0.35), transparent 60%);
+  pointer-events:none;
+}
+
+/* Floating gold dust */
+.sparkle{
+  position:fixed; inset:0; pointer-events:none;
+  background:
+    radial-gradient(3px 3px at 10% 30%, rgba(255,213,107,0.7), transparent 60%),
+    radial-gradient(2px 2px at 40% 80%, rgba(255,213,107,0.5), transparent 60%),
+    radial-gradient(2px 2px at 85% 20%, rgba(255,213,107,0.6), transparent 60%),
+    radial-gradient(3px 3px at 65% 60%, rgba(255,213,107,0.75), transparent 60%),
+    radial-gradient(2px 2px at 25% 55%, rgba(255,213,107,0.4), transparent 60%);
+  animation: drift 18s linear infinite;
+  opacity:0.6;
+}
+@keyframes drift{
+  0%{transform: translateY(0)}
+  50%{transform: translateY(-12px)}
+  100%{transform: translateY(0)}
+}
+
+/* Bottle silhouette (abstract) */
+.bottle{
+  position:absolute;
+  right:6vw; bottom:0;
+  width:22vmin; height:55vmin;
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,0.5));
+  opacity:0.55;
+}
+.bottle .shape{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(40% 15% at 50% 10%, rgba(255,255,255,0.2), transparent 70%),
+    linear-gradient(to bottom, rgba(255,255,255,0.08), transparent 40%),
+    linear-gradient(180deg, rgba(255,213,107,0.15), rgba(255,213,107,0.03)),
+    linear-gradient(180deg, #2b2b33, #18181f 70%);
+  border-radius: 40% 40% 20% 20% / 10% 10% 50% 50%;
+}
+.label{
+  position:absolute; left:50%; transform:translateX(-50%);
+  bottom:14vmin; width:70%; height:20%;
+  background: linear-gradient(180deg, var(--gold), #f2c14e);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.35);
+  display:flex; align-items:center; justify-content:center;
+  color:#3a2710; font-weight:700; letter-spacing:0.06em;
+  font-size:2.8vmin;
+}
+.seal{
+  position:absolute; top:4vmin; left:50%; transform:translateX(-50%);
+  width:7vmin; height:7vmin;
+  background: conic-gradient(from 30deg, #b5072e, #e0435d, #b5072e);
+  border-radius:50%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45), inset 0 0 20px rgba(0,0,0,0.35);
+}
+
+/* Center stage */
+.stage{
+  min-height:100dvh;
+  display:grid; place-items:center;
+  padding: clamp(16px, 3vw, 40px);
+}
+.card{
+  width:min(900px, 92vw);
+  background: rgba(13,13,19,0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,213,107,0.25);
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+  overflow:hidden;
+  position:relative;
+}
+.rim{
+  position:absolute; inset:0;
+  border-radius:inherit;
+  padding:2px;
+  background: linear-gradient(120deg, rgba(255,213,107,0.25), rgba(255,255,255,0.08), rgba(255,213,107,0.25));
+  -webkit-mask:
+    linear-gradient(#000, #000) content-box,
+    linear-gradient(#000, #000);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events:none;
+}
+.content{
+  padding: clamp(28px, 5vw, 60px);
+  position:relative;
+  z-index:2;
+}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:0.22em;
+  color: rgba(255,213,107,0.85);
+  font-weight:700;
+  font-size: clamp(12px, 1.6vw, 14px);
+  margin-bottom: 12px;
+}
+.headline{
+  font-size: clamp(28px, 4.4vw, 64px);
+  line-height: 1.05;
+  font-weight: 800;
+  margin: 6px 0 12px;
+  color: var(--gold);
+}
+/* Steady headline span */
+#typeTarget {
+  display:inline-block;
+  white-space:normal;
+  animation:none;
+  border:none;
+  max-width:100%;
+}
+.sub{
+  color: #d8d9df;
+  font-size: clamp(14px, 1.4vw, 18px);
+  margin: 8px 0 22px;
+}
+
+/* Heartline accent */
+.heartline{
+  position:relative; height: 26px; margin: 18px 0 26px;
+}
+.heartline::before{
+  content:"";
+  position:absolute; left:0; right:0; top:50%;
+  height:2px; background: linear-gradient(90deg, transparent, rgba(255,213,107,0.65), transparent);
+  transform: translateY(-50%);
+}
+.heart{
+  position:absolute; left:50%; top:50%; transform: translate(-50%, -50%) scale(1);
+  width: 26px; height: 26px; background:
+    radial-gradient(circle at 30% 30%, #ffccd5, #ff99aa 55%, #ff6f88 70%, transparent 71%),
+    radial-gradient(circle at 70% 30%, #ffccd5, #ff99aa 55%, #ff6f88 70%, transparent 71%);
+  clip-path: polygon(50% 85%, 95% 40%, 80% 15%, 50% 30%, 20% 15%, 5% 40%);
+  filter: drop-shadow(0 6px 18px rgba(255,111,136,0.4));
+  animation: beat 1.8s ease-in-out infinite;
+}
+@keyframes beat{
+  0%, 100% { transform: translate(-50%, -50%) scale(1) }
+  20% { transform: translate(-50%, -50%) scale(1.08) }
+  40% { transform: translate(-50%, -50%) scale(0.98) }
+  60% { transform: translate(-50%, -50%) scale(1.1) }
+  80% { transform: translate(-50%, -50%) scale(0.99) }
+}
+
+/* CTA buttons */
+.cta{
+  display:flex; gap:12px; flex-wrap:wrap;
+}
+.btn{
+  appearance:none; border:none; cursor:pointer;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: 
+
+  letter-spacing: 0.02em;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+.btn-primary{
+  background: linear-gradient(180deg, var(--gold), #f2c14e);
+  color:#3a2710;
+  box-shadow: 0 10px 18px rgba(255,213,107,0.35);
+}
+.btn-primary:hover{ 
+  transform: translateY(-2px); 
+  box-shadow: 0 14px 26px rgba(255,213,107,0.45) 
+}
+.btn-ghost{
+  background: rgba(255,255,255,0.08);
+  color:#f6f7fb;
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover{ 
+  transform: translateY(-2px); 
+  background: rgba(255,255,255,0.12) 
+}
+
+/* Footnote */
+.foot{
+  margin-top: 18px;
+  font-size: 12px;
+  color: #c7c8ce;
+  opacity:0.8;
+}
+
+/* Modal */
+.modal{
+  position:fixed; inset:0; display:none;
+  align-items:center; justify-content:center;
+  background: rgba(0,0,0,0.6);
+  z-index:20;
+}
+.modal.open{ display:flex }
+.modal-card{
+  width:min(620px, 92vw);
+  background:#12121a; color:#f1f3f7;
+  border: 1px solid rgba(255,213,107,0.25);
+  border-radius:18px; overflow:hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.65);
+  animation: pop .18s ease-out;
+}
+@keyframes pop{ 
+  from{ transform: scale(0.96); opacity:0 } 
+  to{ transform: scale(1); opacity:1 } 
+}
+.modal-head{
+  padding:18px 20px;
+  background: linear-gradient(120deg, rgba(255,213,107,0.18), transparent);
+  font-weight:800; letter-spacing:0.02em;
+}
+.modal-body{ padding: 18px 20px; line-height:1.6 }
+.modal-actions{ padding: 16px 20px; display:flex; gap: 10px; justify-content:flex-end }
+
+/* Responsive tweak */
+@media (max-width: 640px){
+  .bottle{ right: -2vw; width: 28vmin; height: 65vmin; opacity:0.45 }
+  .label{ font-size:3.2vmin }
+}
+</style>
+</head>
+<body>
+<div class="sparkle" aria-hidden="true"></div>
+
+<div class="stage">
+  <div class="card">
+    <div class="rim" aria-hidden="true"></div>
+    <div class="content">
+      <div class="eyebrow">A moment of warmth</div>
+      <h1 class="headline">
+        <span id="typeTarget">Are you ready to feel the care of Fundador?</span>
+      </h1>
+      <p class="sub">
+        Cathy, I know you're not feeling well right now, and I just want you to remember that
+        you're surrounded by care and love. Even without medicines, healing can come from rest,
+        nourishment, and the comfort of knowing you're not alone. Please take things slowly, listen to
+        your body, and let yourself be cared for in the simplest ways. This is my simple effort for you but I will do my best for you. If you want more just click Tell me more button.
+      </p>
+      <div class="heartline" aria-hidden="true">
+        <div class="heart"></div>
+      </div>
+      <div class="cta">
+        <button class="btn btn-primary" id="readyBtn">Yes, I'm ready</button>
+        <button class="btn btn-ghost" id="learnBtn">Tell me more</button>
+      </div>
+      <div class="foot">Sip responsibly. Care is best felt slowly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottle decoration -->
+<div class="bottle" aria-hidden="true">
+  <div class="shape"></div>
+  <div class="seal"></div>
+  <div class="label">FUNDADOR CARE EDITION</div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head" id="modalTitle">A gentle welcome</div>
+    <div class="modal-body" id="modalBody">
+      Tonight's pour is not just flavor—it's presence. A warm note, a soft glow, and a promise:
+      you'll be cared for in every small, thoughtful moment. Ready to begin?
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="beginBtn">Begin</button>
+      <button class="btn btn-ghost" id="closeBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<audio id="bgAudio" src="hulog.mp3" loop preload="auto"></audio>
+<script>
+/* Modal logic with context so "Begin" can add a longer message into the .sub paragraph
+   when the modal was opened via "Tell me more". */
+const modal = document.getElementById('modal');
+const readyBtn = document.getElementById('readyBtn');
+const learnBtn = document.getElementById('learnBtn');
+const closeBtn = document.getElementById('closeBtn');
+const beginBtn = document.getElementById('beginBtn');
+const modalBody = document.getElementById('modalBody');
+const sub = document.querySelector('.sub');
+
+const bgAudio = document.getElementById('bgAudio');
+if (bgAudio) {
+  bgAudio.volume = 0.18; // initial volume, adjust as needed
+}
+// helper to attempt playback on user gesture
+function tryPlayBg() {
+  if (!bgAudio) return;
+  bgAudio.play().catch(() => {
+    // swallow promise rejection if browser blocks autoplay; will play on next gesture
+  });
+}
+
+// ensure clicks that are user gestures start the music
+[readyBtn, learnBtn, beginBtn].forEach(btn => {
+  if (btn) btn.addEventListener('click', tryPlayBg);
+});
+
+let lastOpenedBy = null;
+
+const openModal = (html, source = null) => {
+  modalBody.innerHTML = html;
+  lastOpenedBy = source;
+  modal.classList.add('open');
+};
+const closeModal = () => modal.classList.remove('open');
+
+readyBtn.addEventListener('click', () => {
+  openModal("<p>If you're ready just DM me on messenger the magic word is 'yes mark' so I know you're ready</p>", 'ready');
+});
+
+learnBtn.addEventListener('click', () => {
+  openModal(
+    "<p>Care is in the craft: warm notes, a golden glow, and attention that lingers.</p>" +
+    "<p>It’s about the little things: a clean glass, the right temperature, the pause between pours. Each detail helps you settle.</p>",
+    'learn'
+  );
+});
+
+closeBtn.addEventListener('click', closeModal);
+
+beginBtn.addEventListener('click', () => {
+  closeModal();
+
+  // If modal was opened via "Tell me more", append a longer message into the .sub paragraph
+  if (lastOpenedBy === 'learn' && sub) {
+    const extraHtml =
+      "<p style='margin-top:12px'> Hi Cathy, you know when we first met on litmatch I remember that time na feeling close ako sayo HAHAHHAHAHa  " +
+      "then the way na mare at pare tawagan natin but at this point I want to tell you na yes gusto kita hindi ako nagmamadali but I want na hindi sayangin ung time na to I know you're not fully healed but I'm here to help and support you. I want you to feel you're special to me. You are welcome to my life and to my heart. So are you ready for my care? Cause I'm seriously falling inlove in you, if you're ready just click 'Yes, I'm ready'</p>";
+    // keep existing content and add the extra content
+    sub.innerHTML = sub.innerHTML + extraHtml;
+    // clear context so repeated clicks don't duplicate
+    lastOpenedBy = null;
+  }
+
+  // subtle confirmation ripple
+  const ripple = document.createElement('div');
+  ripple.style.position = 'fixed';
+  ripple.style.inset = '0';
+  ripple.style.pointerEvents = 'none';
+  ripple.style.background = 'radial-gradient(circle at 50% 50%, rgba(255,213,107,0.18), transparent 60%)';
+  ripple.style.animation = 'fade 900ms ease-out forwards';
+  document.body.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 900);
+});
+
+// Escape to close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Click outside to close
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+// Fade animation for ripple
+const style = document.createElement('style');
+style.textContent = '@keyframes fade { from { opacity: 1 } to { opacity: 0 } }';
+document.head.appendChild(style);
+</script>
+</body>
+</html>
